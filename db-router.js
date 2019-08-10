@@ -12,7 +12,8 @@ router.post('/', async (req, res) => {
     }
     try {
         const posts = await db.insert(newpost)
-        res.status(201).json(posts)
+        const post = await db.find()
+        res.status(201).json(post)
     } catch (error) {
         res.status(500).json({ error: "There was an error while saving the post to the database" })
     }
