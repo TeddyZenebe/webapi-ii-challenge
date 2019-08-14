@@ -28,7 +28,7 @@ router.post('/:id/comments', async (req, res) => {
 
     if (!text) { res.status(400).json({ errorMessage: "Please provide text for the comment." }) } else {
         try {
-            const checkpost_id = await db.findById(post_id)
+            const checkpost_id = await db.findById(post_id) // review again
 
             if (checkpost_id[0]) {
                 const comment = await db.insertComment(newcomment)
@@ -78,7 +78,7 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ error: "The post could not be removed" })
     }
 })
-
+ // edit post
 router.put('/:id', async (req, res) => {
     const updatepost = req.body
     const id = req.params.id
